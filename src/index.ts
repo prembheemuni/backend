@@ -1,1 +1,3 @@
-console.log("im working...");
+import { connectDB } from "./db";
+require("dotenv").config({});
+connectDB();
