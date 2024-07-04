@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 const watchHistorySchema = new Schema({
   type: Schema.Types.ObjectId,
   ref: "Video",
