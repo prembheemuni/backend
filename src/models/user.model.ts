@@ -2,12 +2,6 @@ import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-const ACCESS_TOKEN_SECRET = "thisismyaccestokensecret";
-const ACCESS_TOKEN_EXPIRY = "1d";
-
-const REFRESH_TOKEN_SECRET = "thisismyREFRESHtokensecret";
-const REFRESH_TOKEN_EXPIRY = "10d";
-
 const watchHistorySchema = new Schema({
   type: Schema.Types.ObjectId,
   ref: "Video",
@@ -77,8 +71,8 @@ userSchema.methods.generateAccessToken = function () {
       username: this.username,
       fullname: this.fullname,
     },
-    ACCESS_TOKEN_SECRET,
-    { expiresIn: ACCESS_TOKEN_EXPIRY }
+    process.env.ACCESS_TOKEN_SECRET!,
+    { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
   );
 };
 
@@ -87,8 +81,8 @@ userSchema.methods.generateRefreshToken = function () {
     {
       _id: this._id,
     },
-    REFRESH_TOKEN_SECRET,
-    { expiresIn: REFRESH_TOKEN_EXPIRY }
+    process.env.REFRESH_TOKEN_SECRET!,
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
   );
 };
 

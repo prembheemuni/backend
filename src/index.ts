@@ -1,6 +1,6 @@
+require("dotenv").config();
 import { app } from "./app";
 import { connectDB } from "./db";
-require("dotenv").config({});
 connectDB()
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
