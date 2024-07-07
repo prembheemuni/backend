@@ -4,3 +4,5 @@ export interface newUserBody {
   fullname: string;
   password: string;
 }
+
+export type loginUserBody = Omit<newUserBody, "fullname">;

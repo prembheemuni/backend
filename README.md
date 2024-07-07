@@ -7,8 +7,10 @@
 
 
 Multer Notes : 
-1. When using multer fields, the name should match with what ever name we are using it from postman/client, good practice is to make same name over postman/client , mullter field name and db field name.
+    1. When using multer fields, the name should match with what ever name we are using it from postman/client, good practice is to make same name over postman/client , mullter field name and db field name.
 
 Postman :
-1. We can create collections for well defined structure for testing our apis, and we can share collections,
-2. We can create environments for URLs for staging and dev and prod and local testing.
+    1. We can create collections for well defined structure for testing our apis, and we can share collections,
+    2. We can create environments for URLs for staging and dev and prod and local testing.
+
+5. We can save mongoose object without providing all fields by passing validateBeforeSave flag to false.

@@ -54,12 +54,12 @@ userSchema.pre("save", async function (next) {
 });
 
 // We can able to create custom methods for userSchema using methods prototype
-userSchema.methods.isPassowordCorrect = async function (password: string) {
-  await bcrypt.compare(password, this.password);
+userSchema.methods.isPasswordCorrect = async function (password: string) {
+  return await bcrypt.compare(password, this.password);
 };
 
 userSchema.methods.generateAccessToken = function () {
-  return jwt.sign(
+  const val = jwt.sign(
     {
       _id: this._id,
       email: this.email,
@@ -69,6 +69,9 @@ userSchema.methods.generateAccessToken = function () {
     process.env.ACCESS_TOKEN_SECRET!,
     { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
   );
+  console.log(val, "as o");
+
+  return val;
 };
 
 userSchema.methods.generateRefreshToken = function () {
