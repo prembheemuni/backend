@@ -1,2 +1,2 @@
-export const DB_NAME = "StreamSaga";
+export const DB_NAME = "streamsaga";
 export const API_VERSION = "/api/v1";

@@ -2,11 +2,6 @@ import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-const watchHistorySchema = new Schema({
-  type: Schema.Types.ObjectId,
-  ref: "Video",
-});
-
 const userSchema = new Schema(
   {
     username: {
@@ -37,7 +32,7 @@ const userSchema = new Schema(
     coverImage: {
       type: String, // cloundinary image
     },
-    watchHistory: [watchHistorySchema],
+    watchHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
     password: {
       type: String,
       required: [true, "Password is Required"],
@@ -86,4 +81,4 @@ userSchema.methods.generateRefreshToken = function () {
   );
 };
 
-export const user = mongoose.model("User", userSchema);
+export const User = mongoose.model("User", userSchema);
